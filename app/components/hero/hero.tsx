@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
               <div className="hero-avatar-main">
                 <div className="hero-avatar-inner">
                   <img
-                    src="app/assets/avatar.jpg"
+                    src="public/assets/avatar.jpg"
                     alt="Hayat Avatar"
                     className="hero-avatar-image"
                   />
