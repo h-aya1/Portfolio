@@ -1,7 +1,7 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "build",
-  "framework": "react",
+  "framework": "react-router",
   "installCommand": "npm install",
   "devCommand": "npm start",
   "regions": ["iad1"]
