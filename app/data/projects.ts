@@ -19,7 +19,7 @@ export const projects: Project[] = [
     technologies: ["React", "JavaScript"],
     liveDemo: "#",
     github: "https://github.com/Hotel-Translyvania/Hotel-Management-System.git",
-    image: "public/assets/project-images/hotel.jpg",
+    image: "/assets/project-images/hotel.jpg",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ export const projects: Project[] = [
     technologies: ["React", "PostgreSQL", "API Integration"],
     liveDemo: "#",
     github: "https://github.com/fikante/Bank_Management_System.git",
-    image: "public/assets/project-images/bank.jpg",
+    image: "/assets/project-images/bank.jpg",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     technologies: ["React", "CSS"],
     liveDemo: "https://basirahtv.com",
     github: "https://github.com/ekram-web/promotion_Api.git",
-    image: "public/assets/project-images/basirah.png",
+    image: "/assets/project-images/basirah.png",
   },
   // {
   //   id: 4,
