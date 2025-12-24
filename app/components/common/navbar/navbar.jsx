@@ -4,7 +4,7 @@ import './navbar.css';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -13,17 +13,17 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar border-divider">
       <div className="navbar-container">
         <div className="navbar-brand">
-          <h1 className="navbar-logo">
-            Hayat
+          <h1 className="navbar-logo font-mono text-accent">
+            HAYAT
           </h1>
         </div>
-        
+
         {/* Desktop Navigation */}
         <div className="navbar-desktop">
-          <div className="navbar-links">
+          <div className="navbar-links font-mono">
             <button
               onClick={() => scrollToSection('home')}
               className="navbar-link"
@@ -46,11 +46,11 @@ const Navbar = () => {
               onClick={() => scrollToSection('experience')}
               className="navbar-link"
             >
-              Experience
+              History
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="navbar-link"
+              className="navbar-link text-accent"
             >
               Contact
             </button>

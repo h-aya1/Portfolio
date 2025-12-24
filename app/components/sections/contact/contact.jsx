@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { emailjsConfig } from '../../config/emailjs';
+import { emailjsConfig } from '~/config/emailjs';
 import './contact.css';
 
 const Contact = () => {
@@ -10,9 +10,9 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
@@ -45,7 +45,7 @@ const Contact = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -56,7 +56,7 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       {/* Background decoration */}
       <div className="contact-bg-decoration"></div>
-      
+
       <div className="contact-container">
         <div className="contact-header">
           <div className="contact-badge">
@@ -79,7 +79,7 @@ const Contact = () => {
                 Let's Connect
               </h3>
               <p className="contact-intro-text">
-                Whether you have a question about my work, want to discuss a potential project, 
+                Whether you have a question about my work, want to discuss a potential project,
                 or just want to say hello, I'd love to hear from you.
               </p>
             </div>
@@ -93,8 +93,8 @@ const Contact = () => {
                 </div>
                 <div className="contact-method-content">
                   <h4 className="contact-method-title">Email</h4>
-                  <a 
-                    href="mailto:hayata.rezak@gmail.com" 
+                  <a
+                    href="mailto:hayata.rezak@gmail.com"
                     className="contact-method-link"
                   >
                     hayata.rezak@gmail.com
@@ -110,9 +110,9 @@ const Contact = () => {
                 </div>
                 <div className="contact-method-content">
                   <h4 className="contact-method-title">GitHub</h4>
-                  <a 
-                    href="https://github.com/h-aya1" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/h-aya1"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="contact-method-link"
                   >
