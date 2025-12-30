@@ -9,7 +9,7 @@ export const projects = [
     impact: "Streamlined property management workflows by 40%, improved data accuracy through centralized dashboards, and enabled property managers to handle 2x more assets with the same team size.",
     technologies: ["React", "Tailwind CSS", "JavaScript", "Redux"],
     liveDemo: "#",
-    github: "#",
+    github: "https://github.com/skylinktechnologies-eth/PMS/tree/webPanel",
     image: "/assets/project-images/pms.jpg",
     featured: true,
   },
@@ -23,7 +23,10 @@ export const projects = [
     impact: "Automated core business logic including registration and payment tracking, reducing manual processing time by 60% and providing a real-time overview of business performance.",
     technologies: ["React", "Node.js", "Express", "PostgreSQL", "Tailwind CSS"],
     liveDemo: "#",
-    github: "#",
+    github: [
+      { label: "Admin Repo", url: "https://github.com/h-aya1/admin_ummrah" },
+      { label: "API Repo", url: "https://github.com/h-aya1/ummrah_api" }
+    ],
     image: "/assets/project-images/umrah.jpg",
     featured: true,
   },

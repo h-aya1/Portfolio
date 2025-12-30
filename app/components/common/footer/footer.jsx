@@ -40,7 +40,7 @@ const Footer = () => {
 
         <div className="footer-bottom border-t border-divider">
           <p className="footer-copyright-text font-mono text-secondary">
-            © {new Date().getFullYear()} — Built with React & Quiet Confidence
+            © {new Date().getFullYear()}
           </p>
         </div>
       </div>

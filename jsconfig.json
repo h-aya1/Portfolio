@@ -1,5 +1,9 @@
 {
     "compilerOptions": {
+        "moduleResolution": "bundler",
+        "module": "esnext",
+        "allowJs": true,
+        "noEmit": true,
         "baseUrl": ".",
         "paths": {
             "~/*": [

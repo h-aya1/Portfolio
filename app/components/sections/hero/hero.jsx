@@ -15,10 +15,6 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-text-section">
             <div className="hero-text-content">
-              <div className="hero-badge font-mono">
-                <span className="badge-dot"></span>
-                Available for New Opportunities
-              </div>
 
               <h1 className="hero-title">
                 Frontend Developer building <span className="text-accent">real-world systems</span> — with full-stack capability.

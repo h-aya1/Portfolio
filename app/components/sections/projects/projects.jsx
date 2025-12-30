@@ -69,15 +69,30 @@ const Projects = () => {
                       Live Demo
                     </a>
                   )}
-                  {project.github !== "#" && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-link project-link-secondary"
-                    >
-                      GitHub
-                    </a>
+                  {/* Dynamic GitHub Links Rendering */}
+                  {Array.isArray(project.github) ? (
+                    project.github.map((link, linkIndex) => (
+                      <a
+                        key={linkIndex}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link project-link-secondary"
+                      >
+                        {link.label || "GitHub"}
+                      </a>
+                    ))
+                  ) : (
+                    project.github !== "#" && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link project-link-secondary"
+                      >
+                        GitHub
+                      </a>
+                    )
                   )}
                 </div>
               </div>

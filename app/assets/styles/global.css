@@ -2,13 +2,13 @@
 
 /* Global Styles */
 :root {
-  --bg-primary: #0A0E14;
-  --bg-secondary: #0F1623;
-  --border-primary: #1F2937;
-  --accent-primary: #6366F1;
-  --accent-subtle: #22D3EE;
-  --text-primary: #E5E7EB;
-  --text-secondary: #9CA3AF;
+  --bg-primary: #FDFBF7;
+  --bg-secondary: #F4F1EA;
+  --border-primary: #E6E2D8;
+  --accent-primary: #A67C52;
+  --accent-subtle: #D7CCC8;
+  --text-primary: #392b1a;
+  --text-secondary: #786C5E;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
