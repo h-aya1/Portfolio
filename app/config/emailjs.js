@@ -2,10 +2,10 @@
 // You need to sign up at https://www.emailjs.com/ and get these values
 
 export const emailjsConfig = {
-  serviceId: 'service_afhjoz5', // Replace with your EmailJS service ID
-  templateId: 'template_md5gs1l', // Replace with your EmailJS template ID
-  publicKey: 'HiUoE4LGa5x_Y2Wrx', // Replace with your EmailJS public key
-  recipientEmail: 'hayata.rezak@gmail.com' // Your email address where you want to receive messages
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+  recipientEmail: import.meta.env.VITE_EMAILJS_RECIPIENT_EMAIL
 };
 
 // Instructions to set up EmailJS:
