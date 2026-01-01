@@ -9,4 +9,9 @@ export default defineConfig({
     reactRouter(),
     tsconfigPaths(),
   ],
+  build: {
+    rollupOptions: {
+      input: "index.html",
+    },
+  },
 });
