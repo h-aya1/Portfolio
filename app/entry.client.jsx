@@ -1,11 +1,35 @@
-import { HydratedRouter } from "react-router/dom";
+import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from "react-router-dom";
 import { startTransition, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import Home from "./routes/home";
+import "./assets/styles/global.css";
+
+function Layout() {
+    return (
+        <>
+            <Outlet />
+            <ScrollRestoration />
+        </>
+    );
+}
+
+const router = createBrowserRouter([
+    {
+        element: <Layout />,
+        children: [
+            {
+                path: "/",
+                element: <Home />,
+            },
+        ],
+    },
+]);
 
 startTransition(() => {
-    createRoot(document.getElementById("root")).render(
+    const root = createRoot(document.getElementById("root"));
+    root.render(
         <StrictMode>
-            <HydratedRouter />
+            <RouterProvider router={router} />
         </StrictMode>
     );
 });
