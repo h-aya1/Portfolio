@@ -27,14 +27,14 @@ export const links = () => [
 
 export function Layout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -45,6 +45,19 @@ export function Layout({ children }) {
 
 export default function App() {
   return <Outlet />;
+}
+
+export function HydrateFallback() {
+  return (
+    <div className="loader-container">
+      <div className="loader-content">
+        <h1 className="loader-logo font-mono">H·AYAT</h1>
+        <div className="loader-line-wrapper">
+          <div className="loader-line"></div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function ErrorBoundary({ error }) {
