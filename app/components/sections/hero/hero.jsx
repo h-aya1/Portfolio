@@ -1,49 +1,99 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './hero.css';
 
+const ROLES = [
+  'Frontend Developer',
+  'Full-Stack Builder',
+  'UI/UX Thinker',
+  'System Architect',
+];
+
 const Hero = () => {
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayed, setDisplayed]  = useState('');
+  const [deleting, setDeleting]    = useState(false);
+
+  useEffect(() => {
+    const currentRole = ROLES[roleIndex];
+    let timeout;
+
+    if (!deleting && displayed.length < currentRole.length) {
+      timeout = setTimeout(() => setDisplayed(currentRole.slice(0, displayed.length + 1)), 60);
+    } else if (!deleting && displayed.length === currentRole.length) {
+      timeout = setTimeout(() => setDeleting(true), 2400);
+    } else if (deleting && displayed.length > 0) {
+      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35);
+    } else if (deleting && displayed.length === 0) {
+      setDeleting(false);
+      setRoleIndex((i) => (i + 1) % ROLES.length);
     }
+
+    return () => clearTimeout(timeout);
+  }, [displayed, deleting, roleIndex]);
+
+  const scrollDown = () => {
+    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section id="home" className="hero-section">
+      {/* Ambient background blobs */}
+      <div className="hero-blob hero-blob-1" />
+      <div className="hero-blob hero-blob-2" />
+
+      {/* Floating code decoration */}
+      <div className="hero-code-float" aria-hidden="true">
+        <span className="hero-code-line"><span className="hero-code-kw">const</span> hayat = {'{'}</span>
+        <span className="hero-code-line">  role: <span className="hero-code-str">"developer"</span>,</span>
+        <span className="hero-code-line">  focus: <span className="hero-code-str">"clarity"</span>,</span>
+        <span className="hero-code-line">  status: <span className="hero-code-accent">"available"</span></span>
+        <span className="hero-code-line">{'}'}</span>
+      </div>
+
       <div className="hero-container">
-        <div className="hero-content">
-          <div className="hero-text-section">
-            <div className="hero-text-content">
+        {/* Availability badge */}
+        <div className="hero-badge">
+          <span className="hero-badge-dot" />
+          <span>Available for work</span>
+        </div>
 
-              <h1 className="hero-title">
-                Frontend Developer building <span className="text-accent">real-world systems</span> — with full-stack capability.
-              </h1>
+        {/* Main headline */}
+        <h1 className="hero-headline">
+          Crafting interfaces<br />
+          that <em>think clearly</em>.
+        </h1>
 
-              <p className="hero-description text-secondary">
-                I design modern web interfaces, build backend APIs when needed, and I’m expanding into mobile apps.
-                Focused on clarity, scalability, and system-oriented solutions.
-              </p>
-            </div>
+        {/* Animated role */}
+        <p className="hero-role">
+          <span className="hero-role-label">I am a </span>
+          <span className="hero-role-typed">{displayed}</span>
+          <span className="hero-cursor">|</span>
+        </p>
 
-            <div className="hero-buttons">
-              <button
-                onClick={scrollToProjects}
-                className="hero-btn hero-btn-primary"
-              >
-                View Work
-              </button>
+        {/* Description */}
+        <p className="hero-description">
+          Frontend-first, full-stack capable. I build production systems that are
+          clean by design, scalable by nature, and human at the core.
+        </p>
 
-              <a
-                href="#contact"
-                className="hero-btn hero-btn-secondary"
-              >
-                Contact Me
-              </a>
-            </div>
-          </div>
+        {/* CTA buttons */}
+        <div className="hero-buttons">
+          <button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} className="hero-btn-primary">
+            View Work
+          </button>
+          <a href="#contact" className="hero-btn-secondary">
+            Let's Talk
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <button className="hero-scroll-indicator" onClick={scrollDown} aria-label="Scroll down">
+        <span className="hero-scroll-line" />
+      </button>
     </section>
   );
 };

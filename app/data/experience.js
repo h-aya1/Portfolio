@@ -3,7 +3,7 @@ export const experience = [
     id: 1,
     title: "Web Developer",
     company: "Skylink Technologies",
-    period: "Jul 2025 – Present",
+    period: "Jul 2025 – Mar 2026",
     description: [
       "Collaborating with a full-stack team on client-facing and internal tools.",
       "Developing responsive UI components with React and Tailwind CSS.",

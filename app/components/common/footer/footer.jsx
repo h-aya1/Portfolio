@@ -6,42 +6,39 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer border-t border-divider">
-      <div className="footer-container">
-        <div className="footer-content">
-          <div className="footer-brand-section">
-            <h2 className="footer-brand font-mono text-accent">HAYAT</h2>
-            <p className="footer-tagline text-secondary">
-              Frontend Developer building real-world systems.
+    <footer className="footer">
+      <div className="section-container">
+        <div className="footer-top">
+          <div className="footer-brand">
+            <h2 className="footer-logo font-mono">H·AYAT</h2>
+            <p className="footer-tagline">
+              Frontend-first developer building quiet, <br /> 
+              thoughtful systems for the modern web.
             </p>
           </div>
 
-          <div className="footer-links-section">
-            <h3 className="footer-links-title font-mono">Connect</h3>
-            <div className="footer-links-list">
-              <a href="https://github.com/h-aya1" target="_blank" rel="noopener noreferrer" className="footer-link text-secondary">
-                GitHub
-              </a>
-              <a href="mailto:contact@example.com" className="footer-link text-secondary">
-                Email
-              </a>
+          <nav className="footer-nav">
+            <div className="footer-nav-col">
+              <span className="footer-label font-mono">General</span>
+              <a href="#home" className="footer-link">Home</a>
+              <a href="#about" className="footer-link">About</a>
+              <a href="#projects" className="footer-link">Projects</a>
             </div>
-          </div>
-
-          <div className="footer-action-section">
-            <button
-              onClick={scrollToTop}
-              className="back-to-top-button font-mono"
-            >
-              Back to Top
-            </button>
-          </div>
+            <div className="footer-nav-col">
+              <span className="footer-label font-mono">Social</span>
+              <a href="https://github.com/h-aya1" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a>
+              <a href="mailto:hayata.rezak@gmail.com" className="footer-link">Email</a>
+            </div>
+          </nav>
         </div>
 
-        <div className="footer-bottom border-t border-divider">
-          <p className="footer-copyright-text font-mono text-secondary">
-            © {new Date().getFullYear()}
+        <div className="footer-bottom">
+          <p className="footer-copyright font-mono">
+            © {new Date().getFullYear()} — Made with Still Water
           </p>
+          <button onClick={scrollToTop} className="footer-top-btn font-mono">
+            Top <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 15l-6-6-6 6"/></svg>
+          </button>
         </div>
       </div>
     </footer>

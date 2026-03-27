@@ -1,110 +1,105 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './navbar.css';
+
+const NAV_ITEMS = [
+  { id: 'home',       label: 'Home' },
+  { id: 'about',      label: 'About' },
+  { id: 'projects',   label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
+];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled]     = useState(false);
+  const [active, setActive]         = useState('home');
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  /* Scroll → .scrolled class */
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  /* Active section via IntersectionObserver */
+  useEffect(() => {
+    const sections = ['home', 'about', 'projects', 'experience', 'contact'];
+    const observers = [];
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(id); },
+        { threshold: 0.35 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
   return (
-    <nav className="navbar border-divider">
+    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="navbar-container">
-        <div className="navbar-brand">
-          <h1 className="navbar-logo font-mono text-accent">
-            HAYAT
-          </h1>
-        </div>
+        {/* Brand */}
+        <button className="navbar-logo" onClick={() => scrollToSection('home')}>
+          H·AYAT
+        </button>
 
-        {/* Desktop Navigation */}
+        {/* Desktop */}
         <div className="navbar-desktop">
-          <div className="navbar-links font-mono">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="navbar-link"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="navbar-link"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="navbar-link"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => scrollToSection('experience')}
-              className="navbar-link"
-            >
-              History
-            </button>
+          <div className="navbar-links">
+            {NAV_ITEMS.map(({ id, label }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className={`navbar-link${active === id ? ' active' : ''}`}
+              >
+                {label}
+              </button>
+            ))}
             <button
               onClick={() => scrollToSection('contact')}
-              className="navbar-link text-accent"
+              className="navbar-link-cta"
             >
               Contact
             </button>
           </div>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile toggle */}
         <div className="navbar-mobile-toggle">
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsMenuOpen((v) => !v)}
             className="mobile-toggle-btn"
-            aria-label="Toggle mobile menu"
+            aria-label="Toggle menu"
           >
-            <span className="toggle-icon"></span>
-            <span className="toggle-icon"></span>
-            <span className="toggle-icon"></span>
+            <span className="toggle-icon" />
+            <span className="toggle-icon" />
+            <span className="toggle-icon" />
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile drawer */}
       {isMenuOpen && (
         <div className="navbar-mobile">
           <div className="mobile-links">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="mobile-link"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="mobile-link"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="mobile-link"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => scrollToSection('experience')}
-              className="mobile-link"
-            >
-              Experience
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="mobile-link"
-            >
-              Contact
-            </button>
+            {[...NAV_ITEMS, { id: 'contact', label: 'Contact' }].map(({ id, label }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className="mobile-link"
+              >
+                {label}
+              </button>
+            ))}
           </div>
         </div>
       )}

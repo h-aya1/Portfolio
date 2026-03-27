@@ -18,7 +18,6 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      // Send email using EmailJS
       const result = await emailjs.send(
         emailjsConfig.serviceId,
         emailjsConfig.templateId,
@@ -54,88 +53,56 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact-section">
-      {/* Background decoration */}
-      <div className="contact-bg-decoration"></div>
-
-      <div className="contact-container">
+      <div className="section-container">
         <div className="contact-header">
-          <div className="contact-badge">
-            <span className="badge-dot"></span>
-            Let's Connect
-          </div>
-          <h2 className="contact-title">Get In Touch</h2>
-          <div className="contact-underline"></div>
-          <p className="contact-description">
-            I'm always interested in hearing about new opportunities and exciting projects.
+          <span className="section-label">Connect</span>
+          <h2 className="section-title">Let's start a conversation.</h2>
+          <p className="contact-subtitle">
+            Whether you have a project in mind or just want to say hi, my inbox is always open.
           </p>
         </div>
 
-        <div className="contact-content">
-          {/* Contact Information */}
-          <div className="contact-info-section">
-            <div className="contact-intro-card">
-              <h3 className="contact-intro-title">
-                <span className="contact-intro-icon">💬</span>
-                Let's Connect
-              </h3>
-              <p className="contact-intro-text">
-                Whether you have a question about my work, want to discuss a potential project,
-                or just want to say hello, I'd love to hear from you.
-              </p>
+        <div className="contact-grid">
+          {/* Contact Info */}
+          <div className="contact-info">
+            <div className="contact-method glass-card">
+              <div className="method-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div className="method-text">
+                <span className="method-label font-mono">Mail</span>
+                <a href="mailto:hayata.rezak@gmail.com" className="method-link">hayata.rezak@gmail.com</a>
+              </div>
             </div>
 
-            <div className="contact-methods">
-              <div className="contact-method-card">
-                <div className="contact-method-icon">
-                  <svg className="contact-icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div className="contact-method-content">
-                  <h4 className="contact-method-title">Email</h4>
-                  <a
-                    href="mailto:hayata.rezak@gmail.com"
-                    className="contact-method-link"
-                  >
-                    hayata.rezak@gmail.com
-                  </a>
-                </div>
+            <div className="contact-method glass-card">
+              <div className="method-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+                </svg>
               </div>
-
-              <div className="contact-method-card">
-                <div className="contact-method-icon">
-                  <svg className="contact-icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                  </svg>
-                </div>
-                <div className="contact-method-content">
-                  <h4 className="contact-method-title">GitHub</h4>
-                  <a
-                    href="https://github.com/h-aya1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="contact-method-link"
-                  >
-                    github.com/h-aya1
-                  </a>
-                </div>
+              <div className="method-text">
+                <span className="method-label font-mono">GitHub</span>
+                <a href="https://github.com/h-aya1" target="_blank" rel="noopener noreferrer" className="method-link">h-aya1</a>
               </div>
-
+            </div>
+            
+            <div className="contact-availability">
+              <div className="avail-badge">
+                <div className="avail-dot"></div>
+                <span>Currently accepting new projects</span>
+              </div>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="contact-form-section">
-            <div className="contact-form-card">
-              <h3 className="contact-form-title">
-                <span className="contact-form-icon">✉️</span>
-                Send a Message
-              </h3>
-              <form onSubmit={handleSubmit} className="contact-form">
+          {/* Form */}
+          <div className="contact-form-wrapper glass-card">
+            <form onSubmit={handleSubmit} className="contact-form">
+              <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name" className="form-label">
-                    Name
-                  </label>
+                  <label htmlFor="name" className="form-label font-mono">Name</label>
                   <input
                     type="text"
                     id="name"
@@ -147,11 +114,8 @@ const Contact = () => {
                     placeholder="Your name"
                   />
                 </div>
-
                 <div className="form-group">
-                  <label htmlFor="email" className="form-label">
-                    Email
-                  </label>
+                  <label htmlFor="email" className="form-label font-mono">Email</label>
                   <input
                     type="email"
                     id="email"
@@ -160,51 +124,41 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="form-input"
-                    placeholder="your.email@example.com"
+                    placeholder="hello@example.com"
                   />
                 </div>
+              </div>
 
-                <div className="form-group">
-                  <label htmlFor="message" className="form-label">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="form-textarea"
-                    placeholder="Your message..."
-                  />
-                </div>
+              <div className="form-group">
+                <label htmlFor="message" className="form-label font-mono">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="form-textarea"
+                  placeholder="Tell me about your project..."
+                />
+              </div>
 
-                <button
-                  type="submit"
-                  className="form-submit-button"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
+              <button
+                type="submit"
+                className="form-submit-btn"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {!isSubmitting && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>}
+              </button>
 
-                {/* Status Messages */}
-                {submitStatus === 'success' && (
-                  <div className="form-success-message">
-                    ✅ Thank you for your message! I'll get back to you soon.
-                  </div>
-                )}
-                {submitStatus === 'error' && (
-                  <div className="form-error-message">
-                    ❌ Failed to send message. Please try again or contact me directly at hayata.rezak@gmail.com
-                  </div>
-                )}
-              </form>
-            </div>
+              {submitStatus === 'success' && <p className="status-msg success">Message sent. I'll get back to you soon.</p>}
+              {submitStatus === 'error' && <p className="status-msg error">Something went wrong. Please try again.</p>}
+            </form>
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 

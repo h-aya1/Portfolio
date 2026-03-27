@@ -4,33 +4,38 @@ import './experience.css';
 const Experience = () => {
   return (
     <section id="experience" className="experience-section">
-      <div className="experience-container">
+      <div className="section-container">
         <div className="experience-header">
-          <div className="experience-badge font-mono">
-            <span className="badge-dot"></span>
-            History
-          </div>
-          <h2 className="experience-title">Previous Experience</h2>
+          <span className="section-label">History</span>
+          <h2 className="section-title">Professional Path</h2>
         </div>
 
         <div className="experience-timeline">
-          {experience.map((item, _index) => (
+          {experience.map((item, index) => (
             <div key={item.id} className="timeline-item">
-              <div className="experience-card card-system">
+              <div className="timeline-dot-wrapper">
+                <div className="timeline-dot"></div>
+                {index !== experience.length - 1 && <div className="timeline-connector"></div>}
+              </div>
+              
+              <div className="experience-content glass-card">
                 <div className="experience-meta">
-                  <span className="experience-period font-mono text-accent">{item.period}</span>
+                  <span className="experience-period font-mono">{item.period}</span>
+                  <span className="experience-company-mobile font-mono">{item.company}</span>
                 </div>
 
-                <h3 className="experience-role">{item.title}</h3>
-                <h4 className="experience-company font-mono text-secondary">{item.company}</h4>
+                <div className="experience-title-row">
+                  <h3 className="experience-role">{item.title}</h3>
+                  <span className="experience-company-desktop font-mono">{item.company}</span>
+                </div>
 
-                <div className="experience-description mt-6">
+                <ul className="experience-description">
                   {item.description.map((desc, i) => (
-                    <div key={i} className="description-item">
-                      <p className="description-text text-secondary">{desc}</p>
-                    </div>
+                    <li key={i} className="description-item">
+                      <p className="description-text">{desc}</p>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </div>
           ))}
