@@ -52,12 +52,6 @@ const Hero = () => {
       </div>
 
       <div className="hero-container">
-        {/* Availability badge */}
-        <div className="hero-badge">
-          <span className="hero-badge-dot" />
-          <span>Available for work</span>
-        </div>
-
         {/* Main headline */}
         <h1 className="hero-headline">
           Crafting interfaces<br />
@@ -66,7 +60,8 @@ const Hero = () => {
 
         {/* Animated role */}
         <p className="hero-role">
-          <span className="hero-role-label">I am a </span>
+          <span className="hero-role-label">I am a</span>
+          {' '}
           <span className="hero-role-typed">{displayed}</span>
           <span className="hero-cursor">|</span>
         </p>

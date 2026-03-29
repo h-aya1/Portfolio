@@ -51,7 +51,7 @@ export function HydrateFallback() {
   return (
     <div className="loader-container">
       <div className="loader-content">
-        <h1 className="loader-logo font-mono">H·AYAT</h1>
+        <h1 className="loader-logo font-mono">HAYAT</h1>
         <div className="loader-line-wrapper">
           <div className="loader-line"></div>
         </div>

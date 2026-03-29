@@ -11,8 +11,6 @@ const CATEGORY_COLORS = {
 
 const STATS = [
   { value: '3+', label: 'Years experience' },
-  { value: '6',  label: 'Projects shipped' },
-  { value: '2',  label: 'Companies' },
   { value: '∞',  label: 'Things to learn' },
 ];
 
