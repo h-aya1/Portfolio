@@ -35,6 +35,8 @@
   align-items: center;
   gap: 1.25rem;
   padding: 1.75rem;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .method-icon-wrapper {

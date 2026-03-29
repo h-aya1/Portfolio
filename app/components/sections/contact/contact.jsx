@@ -49,7 +49,7 @@ const Contact = () => {
 
         <div className="contact-grid">
           <div className="contact-info" data-reveal style={{ '--delay': 100 }}>
-            <div className="contact-method glass-card">
+            <a href="mailto:hayata.rezak@gmail.com" className="contact-method glass-card">
               <div className="method-icon-wrapper">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -57,11 +57,11 @@ const Contact = () => {
               </div>
               <div className="method-text">
                 <span className="method-label font-mono">Mail</span>
-                <a href="mailto:hayata.rezak@gmail.com" className="method-link">hayata.rezak@gmail.com</a>
+                <span className="method-link">hayata.rezak@gmail.com</span>
               </div>
-            </div>
+            </a>
 
-            <div className="contact-method glass-card">
+            <a href="https://github.com/h-aya1" target="_blank" rel="noopener noreferrer" className="contact-method glass-card">
               <div className="method-icon-wrapper">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
@@ -69,11 +69,11 @@ const Contact = () => {
               </div>
               <div className="method-text">
                 <span className="method-label font-mono">GitHub</span>
-                <a href="https://github.com/h-aya1" target="_blank" rel="noopener noreferrer" className="method-link">h-aya1</a>
+                <span className="method-link">h-aya1</span>
               </div>
-            </div>
+            </a>
 
-            <div className="contact-method glass-card">
+            <a href="https://www.linkedin.com/in/hayat-dari-759a1b30a/" target="_blank" rel="noopener noreferrer" className="contact-method glass-card">
               <div className="method-icon-wrapper">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
@@ -83,16 +83,10 @@ const Contact = () => {
               </div>
               <div className="method-text">
                 <span className="method-label font-mono">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/hayat-dari-759a1b30a/" target="_blank" rel="noopener noreferrer" className="method-link">Hayat Dari</a>
+                <span className="method-link">Hayat Dari</span>
               </div>
-            </div>
+            </a>
 
-            <div className="contact-availability">
-              <div className="avail-badge">
-                <div className="avail-dot" />
-                <span>Currently accepting new projects</span>
-              </div>
-            </div>
           </div>
 
           <div className="contact-form-wrapper glass-card" data-reveal style={{ '--delay': 200 }}>
