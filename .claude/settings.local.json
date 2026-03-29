@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.\\(html|jsx|js|json\\)$\")",
+      "Bash(npm run:*)"
+    ]
+  }
+}

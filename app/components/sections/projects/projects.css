@@ -16,50 +16,174 @@
   margin-top: 0.75rem;
 }
 
-/* Grid */
+/* ─── Grid ─── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 
+/* ─── Card ─── */
 .project-card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.6);
+  transition:
+    transform    0.45s var(--ease-out),
+    box-shadow   0.45s var(--ease-out),
+    border-color 0.45s ease;
 }
 
 .project-card-featured {
   grid-column: span 2;
 }
 
-/* Accent bar */
-.project-accent-bar {
-  height: 3px;
-  width: 100%;
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(var(--accent-rgb), 0.4) !important;
+  box-shadow:
+    0 32px 64px -16px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(var(--accent-rgb), 0.12),
+    0 0 48px -12px rgba(var(--accent-rgb), 0.12);
+}
+
+/* Light scan shimmer */
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(108deg, transparent 35%, rgba(255,255,255,0.024) 50%, transparent 65%);
+  transform: translateX(-130%);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+  z-index: 5;
+  border-radius: 12px;
+}
+.project-card:hover::after { transform: translateX(130%); }
+
+/* ─── Image Panel ─── */
+.project-image-panel {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #0b0b0a;
+}
+
+/* Browser chrome bar */
+.image-browser-bar {
+  height: 30px;
+  background: rgba(0, 0, 0, 0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  position: relative;
+  z-index: 2;
   flex-shrink: 0;
 }
 
+.browser-dots { display: flex; gap: 6px; }
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-red    { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green  { background: #28c840; }
+
+/* Screenshot area — scrolls top→bottom on hover */
+.image-scroll-area {
+  height: 230px;
+  background-size: cover;
+  background-position: center 0%;
+  background-repeat: no-repeat;
+  transition: background-position 5s ease;
+}
+
+.project-card:hover .image-scroll-area {
+  background-position: center 100%;
+}
+
+.project-card-featured .image-scroll-area {
+  height: 270px;
+}
+
+/* Gradient fade — screenshot bleeds into card body */
+.image-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to bottom, transparent, var(--bg-surface));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Screenshot dots */
+.image-nav-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+
+.nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.22);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.nav-dot.active {
+  background: rgba(255,255,255,0.9);
+  transform: scale(1.4);
+}
+
+/* ─── Accent bar ─── */
+.project-accent-bar {
+  height: 2px;
+  width: 100%;
+  flex-shrink: 0;
+}
 .project-accent-sage { background: var(--sage); }
 .project-accent-rose { background: var(--rose); }
 .project-accent-warm { background: var(--warm); }
 
-/* Body */
+/* ─── Body ─── */
 .project-body {
-  padding: 2rem 2rem 1.75rem;
+  padding: 1.75rem 2rem 1.75rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
+  position: relative;
 }
 
-/* Meta */
+/* Dim project number */
+.project-number {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.035);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+
+/* ─── Meta ─── */
 .project-meta {
   display: flex;
   align-items: center;
@@ -74,7 +198,6 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
-
 .project-role-sage { color: var(--sage); }
 .project-role-rose { color: var(--rose); }
 .project-role-warm { color: var(--warm); }
@@ -92,7 +215,7 @@
   border: 1px solid rgba(143, 174, 159, 0.25);
 }
 
-/* Title */
+/* ─── Title & Summary ─── */
 .project-title {
   font-family: var(--font-serif);
   font-size: 1.55rem;
@@ -108,7 +231,7 @@
   line-height: 1.65;
 }
 
-/* Details */
+/* ─── Details ─── */
 .project-details {
   display: flex;
   flex-direction: column;
@@ -117,11 +240,7 @@
   flex-grow: 1;
 }
 
-.project-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
+.project-detail { display: flex; flex-direction: column; gap: 0.3rem; }
 
 .project-detail-label {
   font-family: var(--font-mono);
@@ -138,7 +257,7 @@
   color: var(--text-secondary);
 }
 
-/* Tech tags */
+/* ─── Tech ─── */
 .project-tech {
   display: flex;
   flex-wrap: wrap;
@@ -156,13 +275,12 @@
   background: rgba(255,255,255,0.02);
   transition: all 0.2s ease;
 }
-
 .project-tech-tag:hover {
-  border-color: var(--border-mid);
+  border-color: rgba(var(--accent-rgb), 0.4);
   color: var(--text-secondary);
 }
 
-/* Links */
+/* ─── Links ─── */
 .project-links {
   display: flex;
   gap: 1.5rem;
@@ -178,13 +296,13 @@
   transition: opacity 0.2s ease;
   letter-spacing: 0.02em;
 }
-
-.project-link-primary  { color: var(--sage); }
+.project-link-primary   { color: var(--sage); }
 .project-link-secondary { color: var(--text-dim); }
 .project-link:hover { opacity: 0.7; }
 
-/* Responsive */
+/* ─── Responsive ─── */
 @media (max-width: 900px) {
   .projects-grid { grid-template-columns: 1fr; }
   .project-card-featured { grid-column: span 1; }
+  .project-card-featured .image-scroll-area { height: 230px; }
 }

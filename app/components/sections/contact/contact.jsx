@@ -4,11 +4,7 @@ import { emailjsConfig } from '~/config/emailjs';
 import './contact.css';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('idle');
 
@@ -16,20 +12,13 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
-
     try {
       const result = await emailjs.send(
         emailjsConfig.serviceId,
         emailjsConfig.templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: emailjsConfig.recipientEmail,
-        },
+        { from_name: formData.name, from_email: formData.email, message: formData.message, to_email: emailjsConfig.recipientEmail },
         emailjsConfig.publicKey
       );
-
       if (result.status === 200) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
@@ -44,17 +33,13 @@ const Contact = () => {
     }
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <section id="contact" className="contact-section">
       <div className="section-container">
-        <div className="contact-header">
+
+        <div className="contact-header" data-reveal style={{ '--delay': 0 }}>
           <span className="section-label">Connect</span>
           <h2 className="section-title">Let's start a conversation.</h2>
           <p className="contact-subtitle">
@@ -63,8 +48,7 @@ const Contact = () => {
         </div>
 
         <div className="contact-grid">
-          {/* Contact Info */}
-          <div className="contact-info">
+          <div className="contact-info" data-reveal style={{ '--delay': 100 }}>
             <div className="contact-method glass-card">
               <div className="method-icon-wrapper">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -88,72 +72,58 @@ const Contact = () => {
                 <a href="https://github.com/h-aya1" target="_blank" rel="noopener noreferrer" className="method-link">h-aya1</a>
               </div>
             </div>
-            
+
+            <div className="contact-method glass-card">
+              <div className="method-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </div>
+              <div className="method-text">
+                <span className="method-label font-mono">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/hayat-dari-759a1b30a/" target="_blank" rel="noopener noreferrer" className="method-link">Hayat Dari</a>
+              </div>
+            </div>
+
             <div className="contact-availability">
               <div className="avail-badge">
-                <div className="avail-dot"></div>
+                <div className="avail-dot" />
                 <span>Currently accepting new projects</span>
               </div>
             </div>
           </div>
 
-          {/* Form */}
-          <div className="contact-form-wrapper glass-card">
+          <div className="contact-form-wrapper glass-card" data-reveal style={{ '--delay': 200 }}>
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="name" className="form-label font-mono">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                    placeholder="Your name"
-                  />
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="form-input" placeholder="Your name" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="email" className="form-label font-mono">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                    placeholder="hello@example.com"
-                  />
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="form-input" placeholder="hello@example.com" />
                 </div>
               </div>
 
               <div className="form-group">
                 <label htmlFor="message" className="form-label font-mono">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="form-textarea"
-                  placeholder="Tell me about your project..."
-                />
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className="form-textarea" placeholder="Tell me about your project..." />
               </div>
 
-              <button
-                type="submit"
-                className="form-submit-btn"
-                disabled={isSubmitting}
-              >
+              <button type="submit" className="form-submit-btn" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send Message'}
-                {!isSubmitting && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>}
+                {!isSubmitting && (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                )}
               </button>
 
               {submitStatus === 'success' && <p className="status-msg success">Message sent. I'll get back to you soon.</p>}
-              {submitStatus === 'error' && <p className="status-msg error">Something went wrong. Please try again.</p>}
+              {submitStatus === 'error'   && <p className="status-msg error">Something went wrong. Please try again.</p>}
             </form>
           </div>
         </div>

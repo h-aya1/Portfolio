@@ -40,6 +40,7 @@ const Hero = () => {
       {/* Ambient background blobs */}
       <div className="hero-blob hero-blob-1" />
       <div className="hero-blob hero-blob-2" />
+      <div className="hero-blob hero-blob-3" />
 
       {/* Floating code decoration */}
       <div className="hero-code-float" aria-hidden="true">

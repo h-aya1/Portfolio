@@ -27,6 +27,7 @@ const Footer = () => {
             <div className="footer-nav-col">
               <span className="footer-label font-mono">Social</span>
               <a href="https://github.com/h-aya1" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a>
+              <a href="https://www.linkedin.com/in/hayat-dari-759a1b30a/" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a>
               <a href="mailto:hayata.rezak@gmail.com" className="footer-link">Email</a>
             </div>
           </nav>

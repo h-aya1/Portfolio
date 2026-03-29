@@ -10,9 +10,9 @@ const CATEGORY_COLORS = {
 };
 
 const STATS = [
-  { value: '3+', label: 'Year experience' },
-  // { value: '5',  label: 'Projects shipped' },
-  // { value: '2',  label: 'Companies' },
+  { value: '3+', label: 'Years experience' },
+  { value: '6',  label: 'Projects shipped' },
+  { value: '2',  label: 'Companies' },
   { value: '∞',  label: 'Things to learn' },
 ];
 
@@ -20,14 +20,13 @@ const About = () => {
   return (
     <section id="about" className="about-section">
       <div className="section-container">
-        {/* Header */}
-        <div className="about-header">
+
+        <div className="about-header" data-reveal style={{ '--delay': 0 }}>
           <span className="section-label">About</span>
           <h2 className="section-title">The person behind the code.</h2>
         </div>
 
-        {/* Stats row */}
-        <div className="about-stats">
+        <div className="about-stats" data-reveal style={{ '--delay': 100 }}>
           {STATS.map((s) => (
             <div key={s.label} className="about-stat">
               <span className="about-stat-value">{s.value}</span>
@@ -36,10 +35,8 @@ const About = () => {
           ))}
         </div>
 
-        {/* Content grid */}
         <div className="about-content">
-          {/* Bio */}
-          <div className="about-bio-col">
+          <div className="about-bio-col" data-reveal style={{ '--delay': 180 }}>
             <div className="about-bio-card glass-card">
               <h3 className="about-bio-title">The Approach</h3>
               <p className="about-bio-text">
@@ -51,7 +48,6 @@ const About = () => {
                 Currently expanding into <span className="text-accent about-mono">Mobile / App Development</span>.
               </p>
 
-              {/* Languages */}
               <div className="about-languages">
                 <span className="about-languages-label">Languages</span>
                 <div className="about-languages-list">
@@ -65,8 +61,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Skills */}
-          <div className="about-skills-col">
+          <div className="about-skills-col" data-reveal style={{ '--delay': 280 }}>
             <div className="glass-card about-skills-card">
               <h3 className="about-skills-title">Technical Stack</h3>
               {['Frontend', 'Backend', 'Mobile', 'Design', 'Tools'].map((cat) => {

@@ -12,19 +12,22 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled]     = useState(false);
   const [active, setActive]         = useState('home');
+  const [progress, setProgress]     = useState(0);
 
-  /* Scroll → .scrolled class */
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const max = scrollHeight - clientHeight;
+      setProgress(max > 0 ? (scrollTop / max) * 100 : 0);
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  /* Active section via IntersectionObserver */
   useEffect(() => {
     const sections = ['home', 'about', 'projects', 'experience', 'contact'];
     const observers = [];
-
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
@@ -35,7 +38,6 @@ const Navbar = () => {
       obs.observe(el);
       observers.push(obs);
     });
-
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
@@ -47,12 +49,10 @@ const Navbar = () => {
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="navbar-container">
-        {/* Brand */}
         <button className="navbar-logo" onClick={() => scrollToSection('home')}>
-          H·AYAT
+          HAYAT
         </button>
 
-        {/* Desktop */}
         <div className="navbar-desktop">
           <div className="navbar-links">
             {NAV_ITEMS.map(({ id, label }) => (
@@ -64,16 +64,12 @@ const Navbar = () => {
                 {label}
               </button>
             ))}
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="navbar-link-cta"
-            >
+            <button onClick={() => scrollToSection('contact')} className="navbar-link-cta">
               Contact
             </button>
           </div>
         </div>
 
-        {/* Mobile toggle */}
         <div className="navbar-mobile-toggle">
           <button
             onClick={() => setIsMenuOpen((v) => !v)}
@@ -87,16 +83,14 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Reading progress */}
+      <div className="navbar-progress" style={{ width: `${progress}%` }} aria-hidden="true" />
+
       {isMenuOpen && (
         <div className="navbar-mobile">
           <div className="mobile-links">
             {[...NAV_ITEMS, { id: 'contact', label: 'Contact' }].map(({ id, label }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className="mobile-link"
-              >
+              <button key={id} onClick={() => scrollToSection(id)} className="mobile-link">
                 {label}
               </button>
             ))}

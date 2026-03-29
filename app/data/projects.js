@@ -1,4 +1,27 @@
+// PMS images
+import pms1 from '~/assets/images/pms/image.png';
+import pms2 from '~/assets/images/pms/image copy.png';
+import pms3 from '~/assets/images/pms/image copy 2.png';
+import pms4 from '~/assets/images/pms/image copy 3.png';
+import pms5 from '~/assets/images/pms/image copy 4.png';
+import pms6 from '~/assets/images/pms/image copy 5.png';
+import pms7 from '~/assets/images/pms/image copy 6.png';
+import pms8 from '~/assets/images/pms/image copy 7.png';
+
+// MUB images
+import mub1 from '~/assets/images/mub/Screenshot 2026-02-11 113117.png';
+import mub2 from '~/assets/images/mub/Screenshot 2026-02-11 115324.png';
+import mub3 from '~/assets/images/mub/Screenshot 2026-02-11 124043.png';
+import mub4 from '~/assets/images/mub/Screenshot 2026-02-11 124240.png';
+import mub5 from '~/assets/images/mub/Screenshot 2026-02-11 124327.png';
+
+// Basirah images
+import basirah1 from '~/assets/images/basirah/image.png';
+import basirah2 from '~/assets/images/basirah/image copy.png';
+import basirah3 from '~/assets/images/basirah/image copy 2.png';
+
 export const projects = [
+  // ── With images ──
   {
     id: 1,
     title: "PMS Web Panel",
@@ -10,9 +33,36 @@ export const projects = [
     technologies: ["React", "Tailwind CSS", "JavaScript", "Redux"],
     liveDemo: "#",
     github: "https://github.com/skylinktechnologies-eth/PMS/tree/webPanel",
-    image: "/assets/project-images/pms.jpg",
+    images: [pms1, pms2, pms3, pms4, pms5, pms6, pms7, pms8],
     featured: true,
   },
+  {
+    id: 6,
+    title: "MUB Recruitment Platform",
+    description: "Responsive React job portal offering transparent GCC recruitment with multilingual support and application tracking.",
+    role: "Web Developer",
+    problem: "Job seekers in GCC markets lacked a trustworthy platform to browse international positions, with no visibility into placement success rates or employer credibility.",
+    solution: "Built a full React/Vite application with job browsing by country, user registration and authentication, application tracking, FAQ sections, and multilingual translation.",
+    impact: "Platform presents 1,200+ active jobs, 5,800+ successful placements, and 340+ employer partnerships — backed by government licensing and GCC certification.",
+    technologies: ["React", "Vite", "JavaScript", "CSS3", "Sass", "i18n"],
+    liveDemo: "#",
+    github: "https://github.com/h-aya1/mub-website",
+    images: [mub1, mub2, mub3, mub4, mub5],
+  },
+  {
+    id: 5,
+    title: "Bashirah Promotion Website",
+    description: "Frontend for a media streaming platform focused on content discoverability.",
+    role: "Frontend Developer",
+    problem: "Media content needed a professional digital presence to attract users and provide smooth navigation through promotional materials.",
+    solution: "Developed the promotional frontend focusing on clean aesthetics and smooth, performant navigation.",
+    impact: "Created a strong brand entry point for the media platform, resulting in improved user engagement metrics and professional brand perception.",
+    technologies: ["React", "CSS"],
+    liveDemo: "https://basirahtv.com",
+    github: "https://github.com/ekram-web/promotion_Api.git",
+    images: [basirah1, basirah2, basirah3],
+  },
+  // ── Without images ──
   {
     id: 2,
     title: "Umrah Admin Dashboard",
@@ -27,7 +77,7 @@ export const projects = [
       { label: "Admin Repo", url: "https://github.com/h-aya1/admin_ummrah" },
       { label: "API Repo", url: "https://github.com/h-aya1/ummrah_api" }
     ],
-    image: "/assets/project-images/umrah.jpg",
+    images: null,
     featured: true,
   },
   {
@@ -41,7 +91,7 @@ export const projects = [
     technologies: ["React", "JavaScript", "CSS"],
     liveDemo: "#",
     github: "https://github.com/Hotel-Translyvania/Hotel-Management-System.git",
-    image: "/assets/project-images/hotel.jpg",
+    images: null,
   },
   {
     id: 4,
@@ -54,19 +104,6 @@ export const projects = [
     technologies: ["React", "API Integration", "PostgreSQL"],
     liveDemo: "#",
     github: "https://github.com/fikante/Bank_Management_System.git",
-    image: "/assets/project-images/bank.jpg",
+    images: null,
   },
-  {
-    id: 5,
-    title: "Bashirah Promotion Website",
-    description: "Frontend for a media streaming platform focused on content discoverability.",
-    role: "Frontend Developer",
-    problem: "Media content needed a professional digital presence to attract users and provide smooth navigation through promotional materials.",
-    solution: "Developed the promotional frontend focusing on clean aesthetics and smooth, performant navigation.",
-    impact: "Created a strong brand entry point for the media platform, resulting in improved user engagement metrics and professional brand perception.",
-    technologies: ["React", "CSS"],
-    liveDemo: "https://basirahtv.com",
-    github: "https://github.com/ekram-web/promotion_Api.git",
-    image: "/assets/project-images/basirah.png",
-  }
 ];
