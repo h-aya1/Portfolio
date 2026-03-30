@@ -47,7 +47,7 @@ const Hero = () => {
         <span className="hero-code-line"><span className="hero-code-kw">const</span> hayat = {'{'}</span>
         <span className="hero-code-line">  role: <span className="hero-code-str">"developer"</span>,</span>
         <span className="hero-code-line">  focus: <span className="hero-code-str">"clarity"</span>,</span>
-        <span className="hero-code-line">  status: <span className="hero-code-accent">"available"</span></span>
+        <span className="hero-code-line">  status: <span className="hero-code-accent">"building"</span></span>
         <span className="hero-code-line">{'}'}</span>
       </div>
 

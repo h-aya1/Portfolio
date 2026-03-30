@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="section-container">
         <div className="footer-top">
           <div className="footer-brand">
-            <h2 className="footer-logo font-mono">H·AYAT</h2>
+            <h2 className="footer-logo font-mono">HAYAT</h2>
             <p className="footer-tagline">
               Frontend-first developer building quiet, <br /> 
               thoughtful systems for the modern web.
