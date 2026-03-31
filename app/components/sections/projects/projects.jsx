@@ -2,133 +2,140 @@ import { useState } from 'react';
 import { projects } from '~/data/projects.js';
 import './projects.css';
 
-const ACCENT_COLORS = ['sage', 'rose', 'warm', 'sage', 'rose', 'warm'];
-const ACCENT_RGB = { sage: '143,174,159', rose: '201,164,154', warm: '212,169,106' };
+const ACCENT_COLORS = ['sage', 'rose', 'warm'];
 
-const ImagePanel = ({ images, title }) => {
-  const [current, setCurrent] = useState(0);
+const withImages    = projects.filter((p) => p.images?.length > 0);
+const withoutImages = projects.filter((p) => !p.images?.length);
+
+const Lightbox = ({ img, onClose }) => (
+  <div className="lightbox-overlay" onClick={onClose}>
+    <button className="lightbox-close" onClick={onClose} aria-label="Close">✕</button>
+    <img
+      src={img}
+      alt="Project screenshot"
+      className="lightbox-img"
+      onClick={(e) => e.stopPropagation()}
+    />
+  </div>
+);
+
+const Projects = () => {
+  const [lightbox, setLightbox] = useState(null);
 
   return (
-    <div className="project-image-panel">
-      {/* Browser chrome */}
-      <div className="image-browser-bar">
-        <div className="browser-dots">
-          <span className="dot dot-red" />
-          <span className="dot dot-yellow" />
-          <span className="dot dot-green" />
+    <section id="projects" className="projects-section">
+      <div className="section-container">
+
+        <div className="projects-header" data-reveal style={{ '--delay': 0 }}>
+          <span className="section-label">Work</span>
+          <h2 className="section-title">Selected Projects</h2>
         </div>
+
+        {/* Projects with images */}
+        <div className="projects-list">
+          {withImages.map((project, index) => {
+            const color = ACCENT_COLORS[index % ACCENT_COLORS.length];
+            return (
+              <article
+                key={project.id}
+                className="project-item glass-card"
+                data-reveal
+                style={{ '--delay': 80 + index * 100 }}
+              >
+                {/* Left: info */}
+                <div className="project-info">
+                  <span className={`project-role project-role-${color}`}>{project.role}</span>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+
+                  <div className="project-tech">
+                    {project.technologies.map((tech) => (
+                      <span key={tech} className="project-tech-tag">{tech}</span>
+                    ))}
+                  </div>
+
+                  <div className="project-links">
+                    {project.liveDemo !== '#' && (
+                      <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className={`project-link project-link-${color}`}>
+                        Live ↗
+                      </a>
+                    )}
+                    {Array.isArray(project.github)
+                      ? project.github.map((link) => (
+                          <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="project-link project-link-dim">
+                            {link.label} ↗
+                          </a>
+                        ))
+                      : project.github !== '#' && (
+                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link project-link-dim">
+                            GitHub ↗
+                          </a>
+                        )}
+                  </div>
+                </div>
+
+                {/* Right: image stack */}
+                <div className="project-imgs">
+                  {project.images.map((img, i) => (
+                    <button
+                      key={i}
+                      className="project-thumb"
+                      onClick={() => setLightbox(img)}
+                      aria-label={`View screenshot ${i + 1}`}
+                    >
+                      <img src={img} alt={`${project.title} screenshot ${i + 1}`} />
+                    </button>
+                  ))}
+                </div>
+
+                <div className={`project-side-bar project-side-bar-${color}`} />
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Other projects */}
+        {withoutImages.length > 0 && (
+          <div className="other-projects" data-reveal style={{ '--delay': 100 }}>
+            <span className="other-projects-label">Other Projects</span>
+            <div className="other-projects-grid">
+              {withoutImages.map((project, index) => {
+                const color = ACCENT_COLORS[(withImages.length + index) % ACCENT_COLORS.length];
+                return (
+                  <div key={project.id} className="other-card glass-card">
+                    <span className={`project-role project-role-${color}`}>{project.role}</span>
+                    <h4 className="other-card-title">{project.title}</h4>
+                    <p className="other-card-description">{project.description}</p>
+                    <div className="project-tech">
+                      {project.technologies.map((tech) => (
+                        <span key={tech} className="project-tech-tag">{tech}</span>
+                      ))}
+                    </div>
+                    <div className="project-links">
+                      {Array.isArray(project.github)
+                        ? project.github.map((link) => (
+                            <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="project-link project-link-dim">
+                              {link.label} ↗
+                            </a>
+                          ))
+                        : project.github !== '#' && (
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link project-link-dim">
+                              GitHub ↗
+                            </a>
+                          )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
       </div>
 
-      {/* Screenshot — scrolls top→bottom on card hover */}
-      <div
-        className="image-scroll-area"
-        style={{ backgroundImage: `url(${images[current]})` }}
-        aria-label={`${title} screenshot`}
-      />
-
-      {/* Gradient fade into card background */}
-      <div className="image-fade" aria-hidden="true" />
-
-      {/* Dot switcher for multiple screenshots */}
-      {images.length > 1 && (
-        <div className="image-nav-dots">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              className={`nav-dot${i === current ? ' active' : ''}`}
-              onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
-              aria-label={`Screenshot ${i + 1}`}
-            />
-          ))}
-        </div>
-      )}
-    </div>
+      {lightbox && <Lightbox img={lightbox} onClose={() => setLightbox(null)} />}
+    </section>
   );
 };
-
-const Projects = () => (
-  <section id="projects" className="projects-section">
-    <div className="section-container">
-
-      <div className="projects-header" data-reveal style={{ '--delay': 0 }}>
-        <span className="section-label">Case Studies</span>
-        <h2 className="section-title">Selected Work</h2>
-        <p className="projects-description">
-          Production-ready systems and internal dashboards — built for performance, clarity, and real business impact.
-        </p>
-      </div>
-
-      <div className="projects-grid">
-        {projects.map((project, index) => {
-          const color = ACCENT_COLORS[index % ACCENT_COLORS.length];
-          return (
-            <div
-              key={project.id}
-              className={`project-card glass-card${project.featured ? ' project-card-featured' : ''}`}
-              style={{ '--accent-rgb': ACCENT_RGB[color], '--delay': 80 + index * 110 }}
-              data-reveal
-            >
-              {project.images?.length > 0 && (
-                <ImagePanel images={project.images} title={project.title} />
-              )}
-
-              <div className={`project-accent-bar project-accent-${color}`} />
-
-              <div className="project-body">
-                <span className="project-number">0{index + 1}</span>
-
-                <div className="project-meta">
-                  <span className={`project-role-tag project-role-${color}`}>{project.role}</span>
-                  {project.featured && <span className="project-featured-badge">Featured</span>}
-                </div>
-
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-summary">{project.description}</p>
-
-                <div className="project-details">
-                  {[
-                    { label: 'Problem',  text: project.problem },
-                    { label: 'Solution', text: project.solution },
-                    { label: 'Impact',   text: project.impact },
-                  ].map(({ label, text }) => (
-                    <div key={label} className="project-detail">
-                      <span className="project-detail-label">{label}</span>
-                      <p className="project-detail-text">{text}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="project-tech">
-                  {project.technologies.map((tech) => (
-                    <span key={tech} className="project-tech-tag">{tech}</span>
-                  ))}
-                </div>
-
-                <div className="project-links">
-                  {project.liveDemo !== '#' && (
-                    <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="project-link project-link-primary">
-                      Live Demo ↗
-                    </a>
-                  )}
-                  {Array.isArray(project.github)
-                    ? project.github.map((link) => (
-                        <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="project-link project-link-secondary">
-                          {link.label} ↗
-                        </a>
-                      ))
-                    : project.github !== '#' && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link project-link-secondary">
-                          GitHub ↗
-                        </a>
-                      )}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-);
 
 export default Projects;

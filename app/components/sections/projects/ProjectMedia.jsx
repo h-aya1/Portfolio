@@ -11,7 +11,7 @@ const ProjectMedia = ({ images, title, technologies, accent }) => {
       <div className="project-media">
         <img
           src={images[current]}
-          alt={`${title} — screen ${current + 1}`}
+          alt={`${title} screen ${current + 1}`}
           className="project-media-img"
         />
         {images.length > 1 && (

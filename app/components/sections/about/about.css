@@ -5,89 +5,41 @@
 }
 
 .about-header {
-  margin-bottom: 3.5rem;
+  margin-bottom: 4rem;
 }
 
-/* Stats */
-.about-stats {
-  display: flex;
-  gap: 0;
-  margin-bottom: 4.5rem;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.about-stat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1.5rem;
-  border-right: 1px solid var(--border-subtle);
-  transition: background 0.3s ease;
-}
-
-.about-stat:last-child { border-right: none; }
-
-.about-stat:hover { background: var(--bg-surface); }
-
-.about-stat-value {
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  color: var(--text-primary);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.about-stat-label {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-/* Content Grid */
+/* ─── Content ─── */
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0 4rem;
   align-items: start;
 }
 
-/* Bio Card */
-.about-bio-card {
-  padding: 2.5rem;
+/* Vertical rule */
+.about-divider {
+  width: 1px;
+  background: var(--border-subtle);
+  align-self: stretch;
+  min-height: 100%;
 }
 
-.about-bio-title {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: var(--text-primary);
-  margin-bottom: 1.25rem;
-  font-weight: 400;
+/* ─── Bio ─── */
+.about-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .about-bio-text {
-  font-size: 1rem;
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.85;
   color: var(--text-secondary);
-}
-
-.about-em {
-  font-style: italic;
-  color: var(--rose);
-}
-
-.about-mono {
-  font-family: var(--font-mono);
-  font-size: 0.85em;
 }
 
 /* Languages */
 .about-languages {
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding-top: 1.75rem;
   border-top: 1px solid var(--border-subtle);
 }
@@ -119,34 +71,25 @@
 
 .about-lang-level { color: var(--text-dim); }
 
-/* Skills Card */
-.about-skills-card {
-  padding: 2.5rem;
-}
-
-.about-skills-title {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--text-dim);
-  margin-bottom: 2rem;
+/* ─── Skills ─── */
+.about-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
 }
 
 .about-skill-group {
-  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
 }
 
-.about-skill-group:last-child { margin-bottom: 0; }
-
 .about-cat-label {
-  display: block;
   font-family: var(--font-mono);
   font-size: 0.6rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: 0.65rem;
 }
 
 .about-cat-sage  { color: var(--sage); }
@@ -199,12 +142,15 @@
   filter: brightness(1.15);
 }
 
-/* Responsive */
+/* ─── Responsive ─── */
 @media (max-width: 900px) {
-  .about-content { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 600px) {
-  .about-stats { flex-wrap: wrap; }
-  .about-stat  { flex: 1 1 50%; border-bottom: 1px solid var(--border-subtle); }
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 3rem 0;
+  }
+  .about-divider {
+    width: 100%;
+    height: 1px;
+    min-height: unset;
+  }
 }

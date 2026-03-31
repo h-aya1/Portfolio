@@ -32,7 +32,7 @@ export default function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
+            entry.target.dataset.revealed = 'true';
             observer.unobserve(entry.target);
           }
         });
