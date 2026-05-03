@@ -251,6 +251,37 @@
   object-fit: contain;
 }
 
+.lightbox-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(20,20,20,0.8);
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  transition: background 0.2s;
+}
+
+.lightbox-nav:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.lightbox-prev {
+  left: 1.5rem;
+}
+
+.lightbox-next {
+  right: 1.5rem;
+}
+
 .lightbox-close {
   position: fixed;
   top: 1.5rem;
