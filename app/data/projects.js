@@ -1,3 +1,15 @@
+// FidelKids images
+import fidelkids1 from '~/assets/images/fidelkids/google-pixel-7-mockup-1769579266704.png';
+import fidelkids2 from '~/assets/images/fidelkids/iMockup - iPhone 15 Pro Max (1).png';
+import fidelkids3 from '~/assets/images/fidelkids/iMockup - Google Pixel 8 Pro (1).png';
+import fidelkids4 from '~/assets/images/fidelkids/phone-showcase-removebg-preview.png';
+import fidelkids5 from '~/assets/images/fidelkids/phone-showcase__4_-removebg-preview.png';
+import fidelkids6 from '~/assets/images/fidelkids/phone-showcase__5_-removebg-preview.png';
+
+// SafeEntry images
+import safeentry1 from '~/assets/images/safe_entry/Screenshot 2026-05-15 233050.png';
+import safeentry2 from '~/assets/images/safe_entry/Screenshot 2026-05-15 234353.png';
+
 // PMS images
 import pms1 from '~/assets/images/pms/image.png';
 import pms2 from '~/assets/images/pms/image copy.png';
@@ -21,6 +33,36 @@ import basirah2 from '~/assets/images/basirah/image copy.png';
 import basirah3 from '~/assets/images/basirah/image copy 2.png';
 
 export const projects = [
+  {
+    id: 7,
+    title: "FidelKids",
+    description: "An AI-powered handwriting learning app for children. A Flutter mobile app captures handwriting input and sends it to a Python FastAPI backend that proxies Gemini AI, returning perceptual feedback on letter shape and accuracy with voice responses.",
+    role: "Mobile Developer",
+    technologies: ["Flutter", "Python", "FastAPI", "Gemini AI", "Supabase", "Google ML Kit", "Riverpod"],
+    liveDemo: "https://fyp-8ijx.onrender.com",
+    github: "https://github.com/h-aya1/fyp",
+    images: [fidelkids1, fidelkids2, fidelkids3, fidelkids4, fidelkids5, fidelkids6],
+  },
+  {
+    id: 8,
+    title: "RootIt",
+    description: "A Chrome extension and Next.js companion app that guides developers through structured root cause analysis before reaching for AI.",
+    role: "Full-Stack Developer",
+    technologies: ["Next.js", "Hono", "Drizzle ORM", "TypeScript", "Chrome Extension API"],
+    liveDemo: "#",
+    github: "https://github.com/h-aya1/RootIt",
+    images: null,
+  },
+  {
+    id: 9,
+    title: "SafeEntry (SolShield)",
+    description: "A Web3 security tool built for the Dev3Pack hackathon. Scans Solana RPC endpoints for risk, checks URLs against Google Safe Browsing, delivers AI-voiced security verdicts via ElevenLabs TTS, and maintains an on-chain registry of flagged addresses using an Anchor devnet program.",
+    role: "Full-Stack Developer",
+    technologies: ["Next.js", "TypeScript", "Solana", "Anchor", "ElevenLabs", "LI.FI API"],
+    liveDemo: "https://safe-entry-nu.vercel.app/",
+    github: "https://github.com/foziamohammed/solshield",
+    images: [safeentry1, safeentry2],
+  },
   {
     id: 1,
     title: "PMS Web Panel",

@@ -1,8 +1,6 @@
 import { experience } from '~/data/experience.js';
 import './experience.css';
 
-const TYPES = ['Full-Time', 'Internship'];
-
 const Experience = () => (
   <section id="experience" className="experience-section">
     <div className="section-container">
@@ -22,7 +20,7 @@ const Experience = () => (
           >
             <div className="experience-left">
               <span className="experience-period">{item.period}</span>
-              <span className="experience-type">{TYPES[index] ?? 'Contract'}</span>
+              <span className="experience-type">{item.type}</span>
             </div>
 
             <div className="experience-right">
