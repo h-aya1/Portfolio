@@ -11,6 +11,6 @@ export const emailjsConfig = {
 // Instructions to set up EmailJS:
 // 1. Go to https://www.emailjs.com/ and create an account
 // 2. Create a new Email Service (Gmail, Outlook, etc.)
-// 3. Create an email template with variables: {{from_name}}, {{from_email}}, {{message}}
+// 3. Create an email template with variables: {{name}}, {{email}}, {{title}}, {{time}}, {{message}}
 // 4. Copy the Service ID, Template ID, and Public Key
 // 5. Replace the placeholder values above with your actual values

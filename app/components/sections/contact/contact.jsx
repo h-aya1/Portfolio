@@ -16,7 +16,14 @@ const Contact = () => {
       const result = await emailjs.send(
         emailjsConfig.serviceId,
         emailjsConfig.templateId,
-        { from_name: formData.name, from_email: formData.email, message: formData.message, to_email: emailjsConfig.recipientEmail },
+        {
+          name: formData.name,
+          email: formData.email,
+          title: formData.name,
+          time: new Date().toLocaleString(),
+          message: formData.message,
+          to_email: emailjsConfig.recipientEmail,
+        },
         emailjsConfig.publicKey
       );
       if (result.status === 200) {

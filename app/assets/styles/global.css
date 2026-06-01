@@ -21,7 +21,7 @@
   /* Text */
   --text-primary:   #f0ede8;
   --text-secondary: #9e9a94;
-  --text-dim:       #5c5955;
+  --text-dim:       #839e93;
 
   /* Accents */
   --sage:           #8fae9f;
@@ -78,10 +78,10 @@ body::before {
 /* ─── Cursor Glow ─── */
 .cursor-glow {
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(143, 174, 159, 0.09) 0%, rgba(143, 174, 159, 0.03) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(233, 242, 237, 0.09) 0%, rgba(170, 189, 179, 0.03) 40%, transparent 50%);
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
